@@ -1,0 +1,15 @@
+package com.lyj.springcloud;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
+@SpringBootApplication
+@EnableEurekaServer // Eureka服务器端启动类，接收其他微服务注册进来
+public class Config_Git_EurekaServer7001_App {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Config_Git_EurekaServer7001_App.class, args);
+    }
+
+}

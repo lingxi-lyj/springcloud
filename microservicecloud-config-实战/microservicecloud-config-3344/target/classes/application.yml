@@ -1,0 +1,15 @@
+server:
+  port: 3344
+  
+spring:
+  application:
+    name: microservicecloud-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:lingxi-lyj/microservicecloud-config.git #github上面的git仓库名字（SSH协议链接或者） 
+#  SSH协议链接： git@github.com:lingxi-lyj/microservicecloud-config.git
+# https://github.com/lingxi-lyj/microservicecloud-config
+# 以上是该仓储访问链接， 冒号后面就是GitHub用户名，访问链接前缀为"git@",后缀为".git"。
+  

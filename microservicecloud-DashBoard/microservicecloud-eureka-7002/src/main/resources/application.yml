@@ -1,0 +1,19 @@
+#集群Eureka配置，即把相同的服务部署到不同的服务器上运行，避免由于一台服务器异常而终止程序，
+#集群配置可以在一台服务器发生异常的情况下，还能保持程序的正常运行
+server:
+  port: 7002
+  
+eureka:
+#  server:
+#    enable-self-preservation: false #false 禁用自我保护机制
+  instance:
+    hostname: erureka7002.com #eureka服务端的实例名称
+  client:
+    register-with-eureka: false #表示不向注册中心注册自己
+    fetch-registry: false #false表示自己就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
+    service-url:
+      defaultZone: http://eureka7001.com:7001,http://eureka7003.com:7003
+
+    
+
+      

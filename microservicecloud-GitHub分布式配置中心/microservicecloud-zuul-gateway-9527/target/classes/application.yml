@@ -1,0 +1,33 @@
+server:
+  port: 9527
+  
+spring:
+  application:
+    name: microservicecloud-zuul-9527-gatway
+# 配置网关路由映射规则，也就是把mydept映射到microservicecloud-dept(服务IP地址)，
+#没配置这之前访问是：https://mydept.com:9527/microservicecloud-dept/dept/get/1
+#配置之后访问是：https://mydept.com:9527/mydept/dept/get/1
+#这个配置就是把重要的服务IP地址信息保护起来，不重要的信息暴露出来。
+zuul:
+  prefix: /springcloud  #设置访问路径统一的前缀
+#  ignored-services: microservicecloud-dept   #禁止这个服务IP地址可以访问
+  ignored-services: "*"   #禁止所有服务IP地址可以访问
+  routes:
+    mydept.serviceId: microservicecloud-dept
+    mydept.path: /mydept/**
+    
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true
+    
+info:
+  app.name: lyj-microcloud
+  company.name: www.lyj.com
+  build.artifactId: microservicecloud-zuul-gateway-9527
+  build.version: 0.0.1-SNAPSHOT

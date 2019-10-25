@@ -1,0 +1,64 @@
+server:
+#指定服务器端口号8001
+  port: 8001
+  
+mybatis:
+#mybatis配置文件所在路径
+  config-location: classpath:mybatis/mybatis.cfg.xml
+   #所有Entity别名类所在包
+  type-aliases-package: com.lyj.springcloud.entities
+   #mapper映射文件所在路径
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+  
+spring:
+  application:
+   # 当前应用（服务）起的名字
+    name: microservicecloud-dept       
+  datasource:
+  #当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    #mysql驱动包
+    driver-class-name: com.mysql.jdbc.Driver
+     #数据库名称
+    url: jdbc:mysql://localhost:3306/cloudDB01
+    username: mysql
+    password: 15827318595
+    dbcp2: 
+       min-idle: 5        #数据库连接池的最小维持连接数
+       initial-size: 5    #初始化连接数5个
+       max-total: 5       #设置最大连接数
+       max-wait-millis: 200  #s等待连接获取的最大超时时间
+      
+
+#配置Eureka
+eureka:
+#客户端注册进Eureka服务列表内
+  client:   
+    service-url:
+#      defaultZone: http://localhost:7001/eureka #(单机版服务器)
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+#        集群配置(多台服务器共同使用)
+#      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+#    eureka-server-connect-timeout-seconds: 60000
+#    eureka-connection-idle-timeout-seconds: 60000
+#    eureka-server-read-timeout-seconds: 60000
+#    eureka-service-url-poll-interval-seconds: 60000
+      
+  #自定义实例的statusIP地址名字（主机名字：服务名称修改，不采用默认的名字）
+  instance:
+    instance-id: microservicecloud-dept8001
+    prefer-ip-address: true #访问路径可以显示IP地址
+    
+    
+#配置Eurekaweb界面访问各个服务的的详细信息的info界面
+info:
+  app.name: lyj-microservicecloud
+  company.name: www.lyj.com
+  build.artifactId: microservicecloud-provider-dept-8001
+  build.version: 0.0.1-SNAPSHOT
+
+
+
+#debug: true 
+

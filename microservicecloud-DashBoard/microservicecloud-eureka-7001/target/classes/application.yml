@@ -1,0 +1,46 @@
+##单机版的Eureka配置
+#server:
+#  port: 7001
+#
+#eureka:
+##  server:
+##    enable-self-preservation: false #禁用自我保护机制
+#  instance:
+#    hostname: localhost #eureka服务端的实例名称
+#  client:
+#    register-with-eureka: false #false 表示不向注册中心注册自己
+#     #false表示自己就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
+#    fetch-registry: false
+#    service-url:
+#    #设置与Eureka Server交互的地址查询服务和注册服务都需要这个地址
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  
+  
+  
+  
+  
+
+#集群Eureka配置，即把相同的服务部署到不同的服务器上运行，避免由于一台服务器异常而终止程序，
+#集群配置可以在一台服务器发生异常的情况下，还能保持程序的正常运行
+server:
+  port: 7001
+
+eureka:
+#  server:
+#    enable-self-preservation: false #禁用自我保护机制
+  instance:
+    hostname: eureka7001.com #eureka服务端的实例名称
+  client:
+    register-with-eureka: false #false 表示不向注册中心注册自己
+     #false表示自己就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
+    fetch-registry: false
+    service-url:
+#      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/ 
+      defaultZone: http://eureka7002.com:7002,http://eureka7003.com:7003
+    
+    #设置与Eureka Server交互的地址查询服务和注册服务都需要这个地址
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/  #（单机）
+#      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+    
+    
+    

@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+ http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<!-- 本Module开发步骤 1、新建microservicecloud-api创建完成后查看pom文件变化 2、修改pom 3、新建Entity且配合lombok使用 
+		4、mvn clean&install（打成jar包）后给其他模块引用，达到通用的目的。 也即需要用到部门实体的话，不用每个工程都定义一份，直接引用本模块即可 -->
+	<parent>
+		<!-- 子类里面显示声明才能有明确的继承表现， 无意外就是父类的默认版本否则自己定义 -->
+		<groupId>com.lyj.springcloud</groupId>
+		<artifactId>microservicecloud</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<!-- 当前Module，就是我自己叫什么名字 -->
+	<artifactId>microservicecloud-api</artifactId>
+
+	<!-- 当前Module需要用的jar包，按自己需求添加， 入股父类已经包含了，可以不用 写版本号 -->
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+			<!-- 引入feign依赖 ===start -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
+		</dependency>
+		<!-- 引入feign依赖 ===end -->
+		
+	</dependencies>
+</project>
